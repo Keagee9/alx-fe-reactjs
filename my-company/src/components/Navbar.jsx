@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <<nav style={{ backgroundColor: '#f0f0f0', padding: '10px' }}> {/* Example styles */}
-    {/* ... rest of your Navbar code */}
-  
+    <nav style={{ backgroundColor: '#f0f0f0', padding: '10px' }}> {/* Example styles */}
+  {/* ... rest of your Navbar code */}
+
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>

@@ -19,7 +19,9 @@ import { useState } from 'react';
      return (
        <div style={{ padding: '20px' }}>
          <h1>Contact Us</h1>
-         <form onSubmit={handleSubmit}>
+         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+  {/* ... form elements with individual styles if needed */}
+
            <input
              type="text"
              name="name"
@@ -50,6 +52,7 @@ import { useState } from 'react';
    }
 
    export default Contact;
+
 
 
    import React, { useState } from 'react';
