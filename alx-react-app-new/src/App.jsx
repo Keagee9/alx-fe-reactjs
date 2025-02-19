@@ -49,3 +49,17 @@ function App() {
 }
 
 export default App;
+
+
+import React from 'react';
+import Counter from './Counter'; // Assuming Counter.jsx is in the same directory
+
+function App() {
+  return (
+    <div>
+      <Counter />
+    </div>
+  );
+}
+
+export default App;
