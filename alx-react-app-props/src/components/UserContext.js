@@ -1,12 +1,11 @@
 
 
 
-
 import React from 'react';
 
 const UserContext = React.createContext({
-  user: null, // Default value for user
-  setUser: () => {}, // Default empty function for setting the user
+  userData: null, // Provide a default value! Prevents potential undefined errors.
+  setUserData: () => {}, // Provide a default no-op function.
 });
 
 export default UserContext;

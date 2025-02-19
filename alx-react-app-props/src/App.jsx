@@ -80,19 +80,52 @@ export default App;
 
 
 
-import React from 'react';
+import React, { useState } from 'react';
+import UserContext from './UserContext';
 import ProfilePage from './ProfilePage';
-import { UserProvider } from './UserContext'; // Correct import
 
 function App() {
+  const [userData, setUserData] = useState({ 
+    name: "Jane Doe", 
+    email: "jane.doe@example.com" 
+  }); // Initialize with your actual user data!
+
   return (
-    <UserProvider> {/* Correct usage */}
+    <UserContext.Provider value={{ userData, setUserData }}>
       <ProfilePage />
-    </UserProvider>
+    </UserContext.Provider>
   );
 }
 
 export default App;
 
+
+
+
 import React, { useState } from 'react';
-import UserContext from './UserContext'; // Path to your UserContext.js file
+import UserContext from './UserContext';
+import ProfilePage from './ProfilePage';
+
+function App() {
+  const [userData, setUserData] = useState({ /* Your user data here */ }); // Initialize with actual data
+
+  return (
+    <UserContext.Provider value={{ userData, setUserData }}>
+      <ProfilePage />
+    </UserContext.Provider>
+  );
+}
+
+export default App;
+
+
+
+import ProfilePage from './ProfilePage';
+
+function App() {
+  const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
+
+  return <ProfilePage userData={userData} />;
+}
+
+export default App;

@@ -1,13 +1,14 @@
-// ProfilePage.jsx
+
+
+
+import React, { useContext } from 'react';
+import UserContext from './UserContext';
 import UserInfo from './UserInfo';
 
-function ProfilePage() { // No props needed
-  return (
-    <div>
-      <h1>Profile Page</h1>
-      <UserInfo />
-    </div>
-  );
+function ProfilePage() {
+  const { userData } = useContext(UserContext);
+
+  return <UserInfo />; // No need to pass userData as prop
 }
 
 export default ProfilePage;
