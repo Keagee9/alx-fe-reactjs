@@ -1,3 +1,37 @@
+import React, { useContext } from 'react';
+import UserContext from '../context/UserContext'; // Adjust path as needed
+
+
+function UserProfile() {
+  const { user, setUser } = useContext(UserContext);
+
+  // ... rest of your component code
+}
+
+
+
+import React, { useContext } from 'react';
+import UserContext from '../context/UserContext';
+
+function UserProfile() {
+  const { user, setUser } = useContext(UserContext);
+
+  if (!user) {
+    return <div>Loading...</div>; // Or handle the case where the user is not available
+  }
+
+  return (
+    <div>
+      <h1>Welcome, {user.name}!</h1>
+      <p>Email: {user.email}</p>
+      {/* ... other user profile details */}
+    </div>
+  );
+}
+
+export default UserProfile;
+
+
 import React from 'react';
 
 function UserProfile(props) {
