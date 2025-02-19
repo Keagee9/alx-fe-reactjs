@@ -78,13 +78,15 @@ export default App;
 
 
 
+
+
 import React from 'react';
 import ProfilePage from './ProfilePage';
-import { UserProvider } from './UserContext'; // Import UserProvider
+import { UserProvider } from './UserContext'; // Correct import
 
 function App() {
   return (
-    <UserProvider> {/* THIS IS THE CORRECTED PART */}
+    <UserProvider> {/* Correct usage */}
       <ProfilePage />
     </UserProvider>
   );
