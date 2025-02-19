@@ -75,20 +75,7 @@ function App() {
 export default App;
 
 
-// App.jsx
-import React from 'react';
-import ProfilePage from './ProfilePage';
-import { UserProvider } from './UserContext'; // Import UserProvider
 
-function App() {
-  return (
-    <UserProvider> {/* Wrap ProfilePage with UserProvider */}
-      <ProfilePage />
-    </UserProvider>
-  );
-}
-
-export default App;
 
 
 import React from 'react';
