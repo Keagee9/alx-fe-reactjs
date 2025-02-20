@@ -33,7 +33,7 @@ function App() {
 export default App;
 
 import React from 'react';
-import UserProfile from './components/UserProfile'; // Or './UserProfile' if in same directory
+import UserProfile from './alx-react-app-new/UserProfile'; // Or './UserProfile' if in same directory
 
 function App() {
   return (
