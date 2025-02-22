@@ -15,7 +15,7 @@ function App() {
   );
 }
 
-export default App;
+
 
 import React from 'react';
 import WelcomeMessage from './WelcomeMessage'; // Correct path - same directory
@@ -30,7 +30,7 @@ function App() {
   );
 }
 
-export default App;
+
 
 import React from 'react';
 import UserProfile from './alx-react-app-new/UserProfile'; // Or './UserProfile' if in same directory
@@ -48,7 +48,7 @@ function App() {
   );
 }
 
-export default App;
+
 
 
 import React from 'react';
@@ -62,7 +62,7 @@ function App() {
   );
 }
 
-export default App;
+
 
 import ProfilePage from './ProfilePage';
 
@@ -72,7 +72,7 @@ function App() {
   return <ProfilePage userData={userData} />;
 }
 
-export default App;
+
 
 
 
@@ -97,7 +97,7 @@ function App() {
   );
 }
 
-export default App;
+
 
 
 
@@ -116,7 +116,6 @@ function App() {
   );
 }
 
-export default App;
 
 
 
@@ -128,7 +127,7 @@ function App() {
   return <ProfilePage userData={userData} />;
 }
 
-export default App;
+
 
 
 import React from 'react';
