@@ -10,7 +10,19 @@ const EditRecipeForm = ({ recipe }) => {
   // ... other states for ingredients, instructions, etc.
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission
+  // Incorrect test (example)
+it('calls preventDefault on form submit', () => {
+    // ... setup your test
+    expect(e.preventDefault).toHaveBeenCalled(); // e is your event
+  });
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Correctly prevent default form submission
+    // ... rest of your logic
+  };
+
+  
     const updatedRecipe = {
       id: recipe.id,
       title,
@@ -25,6 +37,7 @@ const EditRecipeForm = ({ recipe }) => {
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="title">Title:</label>
+        
         <input
           type="text"
           id="title"
@@ -47,3 +60,5 @@ const EditRecipeForm = ({ recipe }) => {
 };
 
 export default EditRecipeForm;
+
+
