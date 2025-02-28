@@ -1,64 +1,30 @@
-import { useState } from 'react';
-import { useRecipeStore } from '../store/recipeStore'; 
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useRecipeStore } from './recipeStore';
 
 const EditRecipeForm = ({ recipe }) => {
-  const updateRecipe = useRecipeStore((state) => state.updateRecipe);
-  const navigate = useNavigate();
   const [title, setTitle] = useState(recipe.title);
   const [description, setDescription] = useState(recipe.description);
-  // ... other states for ingredients, instructions, etc.
+  const updateRecipe = useRecipeStore(state => state.updateRecipe);
 
   const handleSubmit = (e) => {
-  // Incorrect test (example)
-it('calls preventDefault on form submit', () => {
-    // ... setup your test
-    expect(e.preventDefault).toHaveBeenCalled(); // e is your event
-  });
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Correctly prevent default form submission
-    // ... rest of your logic
-  };
-
-  
-    const updatedRecipe = {
-      id: recipe.id,
-      title,
-      description,
-      // ... other updated recipe data
-    };
-    updateRecipe(updatedRecipe);
-    navigate(`/recipes/${recipe.id}`); 
+    e.preventDefault();
+    updateRecipe({ ...recipe, title, description });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="title">Title:</label>
-        
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
-      {/* ... input fields for other recipe details */}
-      <button type="submit">Save Changes</button>
+      <input
+        type="text"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <button type="submit">Update Recipe</button>
     </form>
   );
 };
 
 export default EditRecipeForm;
-
-
