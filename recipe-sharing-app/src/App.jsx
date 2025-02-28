@@ -1,5 +1,8 @@
 import RecipeList from './components/RecipeList'; // Or 
 import AddRecipeForm from './components/AddRecipeForm'; // Or 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import RecipeDetails from './RecipeDetails';
+import RecipeList from './RecipeList'; // Assuming you have a component to list recipes
 
 function App() {
   return (
@@ -8,6 +11,19 @@ function App() {
       <AddRecipeForm />
       <RecipeList />
     </div>
+  );
+}
+
+
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/recipes" element={<RecipeList />} />
+        <Route path="/recipes/:recipeId" element={<RecipeDetails />} /> 
+      </Routes>
+    </BrowserRouter>
   );
 }
 
