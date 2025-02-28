@@ -1,65 +1,49 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import EditRecipeForm from './EditRecipeForm'; // Adjust the path
-import useRecipeStore from '../store/recipeStore'; // Adjust the path
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import { useRecipeStore } from '../store/recipeStore'; 
+import { useNavigate } from 'react-router-dom';
 
-// Mock the useRecipeStore
-jest.mock('../store/recipeStore', () => ({
-  __esModule: true,
-  default: jest.fn(),
-}));
+const EditRecipeForm = ({ recipe }) => {
+  const updateRecipe = useRecipeStore((state) => state.updateRecipe);
+  const navigate = useNavigate();
+  const [title, setTitle] = useState(recipe.title);
+  const [description, setDescription] = useState(recipe.description);
+  // ... other states for ingredients, instructions, etc.
 
-describe('EditRecipeForm', () => {
-  it('calls preventDefault on form submit', () => {
-    const preventDefault = jest.fn();
-    const recipe = { id: 1, title: 'Test Recipe', description: 'Test Description' };
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission
+    const updatedRecipe = {
+      id: recipe.id,
+      title,
+      description,
+      // ... other updated recipe data
+    };
+    updateRecipe(updatedRecipe);
+    navigate(`/recipes/${recipe.id}`); 
+  };
 
-    // Mock the store's updateRecipe function
-    useRecipeStore.mockReturnValue({
-      updateRecipe: jest.fn(),
-    });
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="description">Description:</label>
+        <textarea
+          id="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
+      {/* ... input fields for other recipe details */}
+      <button type="submit">Save Changes</button>
+    </form>
+  );
+};
 
-    const { getByRole } = render(
-      <BrowserRouter>
-        <Routes>
-          <Route path="/recipes/:id" element={<div>Test Route</div>} />
-          <Route path="/" element={<EditRecipeForm recipe={recipe} />} />
-        </Routes>
-      </BrowserRouter>
-    );
-
-    const form = getByRole('form');
-    fireEvent.submit(form, { preventDefault });
-
-    expect(preventDefault).toHaveBeenCalled();
-  });
-
-  it('updates the recipe and navigates on submit', () => {
-    const recipe = { id: 1, title: 'Test Recipe', description: 'Test Description' };
-    const updateRecipeMock = jest.fn();
-
-    useRecipeStore.mockReturnValue({
-      updateRecipe: updateRecipeMock,
-    });
-
-    const { getByRole, getByLabelText } = render(
-      <BrowserRouter>
-        <Routes>
-          <Route path="/recipes/:id" element={<div>Test Route</div>} />
-          <Route path="/" element={<EditRecipeForm recipe={recipe} />} />
-        </Routes>
-      </BrowserRouter>
-    );
-
-    fireEvent.change(getByLabelText('Title:'), { target: { value: 'Updated Title' } });
-    fireEvent.change(getByLabelText('Description:'), { target: { value: 'Updated Description' } });
-    fireEvent.click(getByRole('button', { name: 'Save Changes' }));
-
-    expect(updateRecipeMock).toHaveBeenCalledWith({
-      id: 1,
-      title: 'Updated Title',
-      description: 'Updated Description',
-    });
-  });
-});
+export default EditRecipeForm;
