@@ -9,6 +9,17 @@ const EditRecipeForm = ({ recipe }) => {
   const [description, setDescription] = useState(recipe.description);
   // ... other states for ingredients, instructions, etc.
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    updateRecipe({
+      id : parseInt(id),
+      title : newTitle,
+      description: newDescription
+    });
+    alert("Your recipe has been updated");
+    navigate("/");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission
     const updatedRecipe = {
