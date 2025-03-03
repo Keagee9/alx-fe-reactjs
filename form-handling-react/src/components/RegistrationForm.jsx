@@ -54,4 +54,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;c
+export default RegistrationForm;
