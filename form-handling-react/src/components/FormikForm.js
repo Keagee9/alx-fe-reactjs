@@ -20,7 +20,7 @@ const FormikForm = () => {
       initialValues={{ username: '', email: '', password: '' }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
-    >
+    
       <Form>
         <div>
           <label htmlFor="username">Username:</label>
