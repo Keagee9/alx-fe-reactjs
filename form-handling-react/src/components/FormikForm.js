@@ -16,7 +16,7 @@ const FormikForm = () => {
   };
 
   return (
-    <Formik
+    <Formik>
       initialValues={{ username: '', email: '', password: '' }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
