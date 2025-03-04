@@ -23,17 +23,7 @@ const PostsComponent = () => {
           </li>
         ))}
       </ul>
-      <button onClick={refetch}>Refresh Posts</button>
-      {/* Caching Behavior Explanation */}
-      <p>
-        <strong>Caching:</strong> React Query automatically caches the fetched posts. If you navigate away
-        from this component and then come back, the data will load almost instantly from the cache,
-        reducing unnecessary API calls.
-      </p>
-      <p>
-        <strong>Refetching:</strong> Clicking the "Refresh Posts" button triggers a manual refetch of the data.
-        This allows you to update the posts on demand, ensuring you have the latest information.
-      </p>
+      <button onClick={refetch}>Refresh Posts</button> {/* Refetch button */}
     </div>
   );
 };
