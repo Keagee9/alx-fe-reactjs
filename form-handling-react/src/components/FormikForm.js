@@ -1,9 +1,6 @@
-// src/components/formikForm.js (or formikForm.jsx)
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-// In App.jsx or another file
-import FormikForm from './components/formikForm'; // Or './components/formikForm.jsx'
 
 const validationSchema = Yup.object({
   username: Yup.string().required('Username is required'),
