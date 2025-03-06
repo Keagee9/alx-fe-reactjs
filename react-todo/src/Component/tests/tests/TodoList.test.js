@@ -32,3 +32,4 @@ describe('TodoList', () => {
     expect(screen.queryByText('Learn React')).toBeNull();
   });
 });
+export default TodoList;
