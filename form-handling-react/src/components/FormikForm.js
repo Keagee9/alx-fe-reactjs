@@ -9,36 +9,42 @@ const validationSchema = Yup.object().shape({
 });
 
 const FormikForm = () => {
-  const handleSubmit = (values) => {
-    // Simulate API call (replace with actual API call later)
-    console.log('Form submitted:', values);
-    // In a real app, you would send this data to your API endpoint
+  const handleSubmit = (values, { setSubmitting }) => {
+    setTimeout(() => {
+      console.log(values);
+      setSubmitting(false);
+      // In a real app, you would make an API call here.
+    }, 400);
   };
 
   return (
-    <Formik>
+    <Formik
       initialValues={{ username: '', email: '', password: '' }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
-    
-      <Form>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <Field type="text" id="username" name="username" />
-          <ErrorMessage name="username" component="div" style={{ color: 'red' }} />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <Field type="email" id="email" name="email" />
-          <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <Field type="password" id="password" name="password" />
-          <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
-        </div>
-        <button type="submit">Register</button>
-      </Form>
+    >
+      {({ isSubmitting }) => (
+        <Form>
+          <div>
+            <label htmlFor="username">Username:</label>
+            <Field type="text" name="username" />
+            <ErrorMessage name="username" component="div" style={{ color: 'red' }} />
+          </div>
+          <div>
+            <label htmlFor="email">Email:</label>
+            <Field type="email" name="email" />
+            <ErrorMessage name="email" component="div" style={{ color: 'red' }} />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <Field type="password" name="password" />
+            <ErrorMessage name="password" component="div" style={{ color: 'red' }} />
+          </div>
+          <button type="submit" disabled={isSubmitting}>
+            Register
+          </button>
+        </Form>
+      )}
     </Formik>
   );
 };
