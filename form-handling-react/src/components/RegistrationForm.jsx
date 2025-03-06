@@ -1,33 +1,16 @@
 import React, { useState } from 'react';
 
 function RegistrationForm() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  // ... (state variables)
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!username || !email || !password) {
-      setError('All fields are required.');
-      return;
-    }
-
-    // Simulate API call (replace with actual API call)
-    console.log('Form submitted:', { username, email, password });
-
-    // Clear form and reset error
-    setUsername('');
-    setEmail('');
-    setPassword('');
-    setError('');
-  };
+  // ... (handleSubmit function)
 
   return (
     <div>
-      <h2>Registration Form (Controlled)</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <h2>Registration Form</h2>
+
+      {/* Display error messages near the corresponding input fields */}
+      {errors.username && <p style={{ color: 'red' }}>{errors.username}</p>} 
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>
@@ -37,6 +20,8 @@ function RegistrationForm() {
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
+
+        {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
         <div>
           <label>Email:</label>
           <input
@@ -45,6 +30,8 @@ function RegistrationForm() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+
+        {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
         <div>
           <label>Password:</label>
           <input
@@ -53,6 +40,7 @@ function RegistrationForm() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+
         <button type="submit">Register</button>
       </form>
     </div>
