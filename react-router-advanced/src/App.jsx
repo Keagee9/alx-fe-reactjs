@@ -1,6 +1,10 @@
 // App.jsx
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, Navigate, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Blog from './components/Blog'; // Assuming you have a Blog component
+
+
 
 // Components
 const Home = () => <h2>Home Page</h2>;
@@ -68,6 +72,20 @@ const ProtectedRoute = ({ children, isAuthenticated }) => {
 };
 
 function App() {
+  return (
+    <Router>
+      <Switch>
+        {/* ... other routes ... */}
+        <Route path="/blog/:id" component={Blog} />
+        {/* ... other routes ... */}
+      </Switch>
+    </Router>
+  );
+}
+
+
+
+function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleLogin = (status) => {
@@ -99,5 +117,13 @@ function App() {
     </Router>
   );
 }
+
+export default App;
+
+
+
+
+
+
 
 export default App;
