@@ -1,25 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const RegistrationForm = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({}); // Use an object to store errors
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!username || !email || !password) {
-      setError('All fields are required.');
+
+    // Basic validation
+    const newErrors = {};
+    if (!username.trim()) {
+      newErrors.username = "Username is required";
+    }
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+    }
+    if (!password.trim()) {
+      newErrors.password = "Password is required";
+    }
+
+    // Check if there are any errors
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
-    setError('');
+
+    // If no errors, proceed with submission
     console.log({ username, email, password });
-    // In a real app, you would make an API call here.
+    // In a real app, you would make an API call here
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {/* Display errors */}
+      {Object.keys(errors).map((fieldName) => (
+        <p key={fieldName} style={{ color: "red" }}>
+          {errors[fieldName]}
+        </p>
+      ))}
+
       <div>
         <label>Username:</label>
         <input
