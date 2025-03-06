@@ -1,5 +1,6 @@
 import RegistrationForm from './components/RegistrationForm';
-import FormikForm from './components/FormikForm';
+// In App.jsx or another file
+import FormikForm from './components/formikForm.js'; // Or './components/formikForm.jsx'
 
 
 function App() {
