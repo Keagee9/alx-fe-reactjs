@@ -3,14 +3,16 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 
 const PostsComponent = () => {
-  const { isLoading, error, data: posts, refetch } = useQuery('posts', async () => {
+  const fetchPosts = async () => {
     const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
     return response.data;
-  });
+  };
+
+  const { isLoading, isError, data: posts, error, refetch } = useQuery('posts', fetchPosts);
 
   if (isLoading) return 'Loading...';
 
-  if (error) return `An error has occurred: ${error.message}`;
+  if (isError) return `An error has occurred: ${error.message}`;
 
   return (
     <div>
@@ -23,7 +25,7 @@ const PostsComponent = () => {
           </li>
         ))}
       </ul>
-      <button onClick={refetch}>Refresh Posts</button> {/* Added the refetch button */}
+      <button onClick={refetch}>Refresh Posts</button>
     </div>
   );
 };
