@@ -8,7 +8,12 @@ const PostsComponent = () => {
     return response.data;
   };
 
-  const { isLoading, isError, data: posts, error, refetch } = useQuery('posts', fetchPosts);
+  const { isLoading, isError, data: posts, error, refetch } = useQuery('posts', fetchPosts, {
+    cacheTime: 1000 * 60 * 5, // 5 minutes
+    staleTime: 1000 * 30, // 30 seconds
+    refetchOnWindowFocus: false,
+    keepPreviousData: true,
+  });
 
   if (isLoading) return 'Loading...';
 
