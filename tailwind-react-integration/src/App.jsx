@@ -1,15 +1,12 @@
-import './index.css'
-
-import './tailwind.css'
-import './index.html'
-
+// src/App.jsx
+import UserProfile from './components/UserProfile';
 
 function App() {
   return (
-    <div className="text-3xl font-bold underline">
-      Hello Tailwind!
+    <div>
+      <UserProfile />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
