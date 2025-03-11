@@ -2,7 +2,7 @@ import React from 'react';
 
 const UserProfile = () => {
   return (
-    <div className="container mx-auto p-4 sm:p-8 md:p-12 max-w-xs sm:max-w-sm md:max-w-md">
+    <div className="bg-gray-100 my-20 rounded-lg shadow-lg container mx-auto p-4 sm:p-8 md:p-12 max-w-xs sm:max-w-sm md:max-w-md">
       <div className="flex flex-col items-center">
         <img
           src="profile-picture.jpg"
