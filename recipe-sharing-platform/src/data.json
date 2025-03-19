@@ -1,26 +1,119 @@
 [
-    {
-      "id": 1,
-      "title": "Spaghetti Carbonara",
-      "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-      "image": "https://via.placeholder.com/150/FFC107/000000?Text=Carbonara"
-    },
-    {
-      "id": 2,
-      "title": "Chicken Tikka Masala",
-      "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-      "image": "https://via.placeholder.com/150/F44336/FFFFFF?Text=TikkaMasala"
-    },
-    {
-      "id": 3,
-      "title": "Chocolate Chip Cookies",
-      "summary": "Classic homemade cookies with plenty of delicious chocolate chips.",
-      "image": "https://via.placeholder.com/150/8D6E63/FFFFFF?Text=Cookies"
-    },
-    {
-      "id": 4,
-      "title": "Vegetable Stir-Fry",
-      "summary": "A quick and healthy dish with a colorful mix of stir-fried vegetables.",
-      "image": "https://via.placeholder.com/150/4CAF50/FFFFFF?Text=StirFry"
-    }
-  ]
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "https://via.placeholder.com/600/FFC107/000000?Text=Carbonara",
+    "ingredients": [
+      "100g spaghetti",
+      "50g pancetta or guanciale, diced",
+      "1 large egg",
+      "1 egg yolk",
+      "50g Pecorino Romano cheese, grated",
+      "Black pepper, freshly ground"
+    ],
+    "instructions": [
+      "Cook spaghetti according to package directions.",
+      "While pasta cooks, sauté pancetta in a pan until crispy.",
+      "In a bowl, whisk egg, yolk, and grated Pecorino Romano with plenty of black pepper.",
+      "Drain the spaghetti, reserving some pasta water. Add the spaghetti to the pan with pancetta.",
+      "Remove from heat and quickly pour in the egg mixture, tossing vigorously to create a creamy sauce. Add some pasta water if needed.",
+      "Serve immediately, topped with more grated cheese and black pepper."
+    ],
+    "fullDescription": "A rich and satisfying pasta dish that is quick to prepare."
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+    "image": "https://via.placeholder.com/600/F44336/FFFFFF?Text=TikkaMasala",
+    "ingredients": [
+      "500g boneless, skinless chicken thighs, cut into chunks",
+      "2 tbsp yogurt",
+      "1 tbsp lemon juice",
+      "1 tsp ginger-garlic paste",
+      "1 tsp garam masala",
+      "1 tsp cumin powder",
+      "1 tsp coriander powder",
+      "1/2 tsp turmeric powder",
+      "1/2 tsp chili powder (optional)",
+      "2 tbsp oil",
+      "1 onion, finely chopped",
+      "2 cloves garlic, minced",
+      "1 inch ginger, grated",
+      "400g crushed tomatoes",
+      "100ml heavy cream",
+      "Fresh coriander, for garnish"
+    ],
+    "instructions": [
+      "In a bowl, mix yogurt, lemon juice, ginger-garlic paste, garam masala, cumin powder, coriander powder, turmeric powder, and chili powder (if using). Add chicken and marinate for at least 30 minutes.",
+      "Preheat oven or grill. Cook chicken until lightly charred.",
+      "Heat oil in a pan, add chopped onion and sauté until golden brown.",
+      "Add minced garlic and grated ginger, cook for a minute.",
+      "Stir in crushed tomatoes and cook until the sauce thickens.",
+      "Add the cooked chicken to the sauce. Simmer for 5-10 minutes.",
+      "Stir in heavy cream and garam masala. Cook for another 2 minutes.",
+      "Garnish with fresh coriander and serve hot with rice or naan."
+    ],
+    "fullDescription": "A popular and flavorful Indian curry dish."
+  },
+  {
+    "id": 3,
+    "title": "Chocolate Chip Cookies",
+    "summary": "Classic homemade cookies with plenty of delicious chocolate chips.",
+    "image": "https://via.placeholder.com/600/8D6E63/FFFFFF?Text=Cookies",
+    "ingredients": [
+      "1 cup (2 sticks) unsalted butter, softened",
+      "3/4 cup granulated sugar",
+      "3/4 cup packed brown sugar",
+      "2 large eggs",
+      "1 teaspoon vanilla extract",
+      "2 1/4 cups all-purpose flour",
+      "1 teaspoon baking soda",
+      "1 teaspoon salt",
+      "2 cups chocolate chips"
+    ],
+    "instructions": [
+      "Preheat oven to 375°F (190°C).",
+      "In a large bowl, cream together the softened butter, granulated sugar, and brown sugar until light and fluffy.",
+      "Beat in the eggs one at a time, then stir in the vanilla extract.",
+      "In a separate bowl, whisk together the flour, baking soda, and salt.",
+      "Gradually add the dry ingredients to the wet ingredients, mixing until just combined. Do not overmix.",
+      "Stir in the chocolate chips.",
+      "Drop rounded tablespoons of dough onto ungreased baking sheets.",
+      "Bake for 9-11 minutes, or until the edges are golden brown.",
+      "Let cool on the baking sheets for a few minutes before transferring to a wire rack to cool completely."
+    ],
+    "fullDescription": "Warm, gooey, and perfect for satisfying your sweet tooth."
+  },
+  {
+    "id": 4,
+    "title": "Vegetable Stir-Fry",
+    "summary": "A quick and healthy dish with a colorful mix of stir-fried vegetables.",
+    "image": "https://via.placeholder.com/600/4CAF50/FFFFFF?Text=StirFry",
+    "ingredients": [
+      "1 tbsp vegetable oil",
+      "1 onion, sliced",
+      "2 cloves garlic, minced",
+      "1 bell pepper (any color), sliced",
+      "1 carrot, sliced",
+      "1 cup broccoli florets",
+      "1/2 cup snow peas",
+      "2 tbsp soy sauce",
+      "1 tbsp oyster sauce (optional)",
+      "1 tsp sesame oil",
+      "Cooked rice, for serving"
+    ],
+    "instructions": [
+      "Heat vegetable oil in a large wok or skillet over high heat.",
+      "Add sliced onion and cook until slightly softened.",
+      "Add minced garlic and cook for 30 seconds until fragrant.",
+      "Add bell pepper and carrot, stir-fry for 2-3 minutes.",
+      "Add broccoli florets and snow peas, stir-fry for another 2-3 minutes until crisp-tender.",
+      "In a small bowl, whisk together soy sauce and oyster sauce (if using). Pour over the vegetables.",
+      "Stir in sesame oil.",
+      "Serve hot over cooked rice."
+    ],
+    "fullDescription": "A versatile and nutritious meal that can be customized with your favorite vegetables."
+  }
+]

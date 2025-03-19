@@ -32,7 +32,7 @@ function App() {
         <main className="container mx-auto p-4">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            {/* ... (other routes) ... */}
+            <Route path="/recipe/:id" element={<RecipeDetail />} />
           </Routes>
         </main>
       </div>
