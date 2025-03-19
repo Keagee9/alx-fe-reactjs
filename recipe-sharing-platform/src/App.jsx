@@ -1,7 +1,9 @@
-// src/App.jsx
+
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import HomePage from './components/HomePage'; // Only import HomePage once
+import AddRecipeForm from './components/AddRecipeForm';
+// import AddRecipeForm from './components/AddRecipeForm';
 // import SignUpPage from './components/SignUpPage'; // Make sure these are only imported once as well
 // import LoginPage from './components/LoginPage';
 // import CurrencyConverter from './components/CurrencyConverter';
@@ -25,7 +27,9 @@ function App() {
             <Link to="/" className="text-white font-bold text-xl">
               My Recipe App
             </Link>
-            {/* ... (rest of your navigation) ... */}
+            <Link to="/add" className="text-white hover:text-blue-200">
+            Add Recipe
+          </Link>
           </div>
         </nav>
 
@@ -33,11 +37,15 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/recipe/:id" element={<RecipeDetail />} />
+            <Route path="/add" element={<AddRecipeForm />} /> {/* Add this route */}
           </Routes>
         </main>
       </div>
     </Router>
   );
 }
+
+
+
 
 export default App;
