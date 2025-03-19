@@ -4,54 +4,51 @@ function AddRecipeForm() {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [steps, setSteps] = useState('');
-  const [titleError, setTitleError] = useState('');
-  const [ingredientsError, setIngredientsError] = useState('');
-  const [stepsError, setStepsError] = useState('');
+  const [errors, setErrors] = useState({});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const validate = () => {
     let isValid = true;
+    const newErrors = {};
 
     if (!title.trim()) {
-      setTitleError('Title is required');
+      newErrors.title = 'Title is required';
       isValid = false;
-    } else {
-      setTitleError('');
     }
 
     if (!ingredients.trim()) {
-      setIngredientsError('Ingredients are required');
+      newErrors.ingredients = 'Ingredients are required';
       isValid = false;
     } else if (ingredients.trim().split('\n').filter(item => item.trim()).length < 2) {
-      setIngredientsError('Please list at least two ingredients');
+      newErrors.ingredients = 'Please list at least two ingredients';
       isValid = false;
-    } else {
-      setIngredientsError('');
     }
 
     if (!steps.trim()) {
-      setStepsError('Preparation steps are required');
+      newErrors.steps = 'Preparation steps are required';
       isValid = false;
-    } else {
-      setStepsError('');
     }
 
-    if (isValid) {
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validate()) {
       // In a real application, you would send this data to an API
       const newRecipe = {
         title,
         ingredients: ingredients.split('\n').map(item => item.trim()).filter(item => item),
         steps: steps.split('\n').map(item => item.trim()).filter(item => item),
-        // You might want to generate a unique ID here or let the backend handle it
         id: Date.now(),
-        image: 'https://via.placeholder.com/300/CCCCCC/FFFFFF?Text=NewRecipe', // Placeholder image
-        summary: ingredients.split('\n')[0] || 'New Recipe Summary', // Basic summary
+        image: 'https://via.placeholder.com/300/CCCCCC/FFFFFF?Text=NewRecipe',
+        summary: ingredients.split('\n')[0] || 'New Recipe Summary',
       };
       console.log('New Recipe Submitted:', newRecipe);
-      // Reset the form after submission (optional)
       setTitle('');
       setIngredients('');
       setSteps('');
+      setErrors({}); // Clear errors on successful submission
     }
   };
 
@@ -70,7 +67,7 @@ function AddRecipeForm() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          {titleError && <p className="text-red-500 text-xs italic">{titleError}</p>}
+          {errors.title && <p className="text-red-500 text-xs italic">{errors.title}</p>}
         </div>
         <div className="mb-4">
           <label htmlFor="ingredients" className="block text-gray-700 text-sm font-bold mb-2">
@@ -83,7 +80,7 @@ function AddRecipeForm() {
             value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
           />
-          {ingredientsError && <p className="text-red-500 text-xs italic">{ingredientsError}</p>}
+          {errors.ingredients && <p className="text-red-500 text-xs italic">{errors.ingredients}</p>}
         </div>
         <div className="mb-6">
           <label htmlFor="steps" className="block text-gray-700 text-sm font-bold mb-2">
@@ -96,7 +93,7 @@ function AddRecipeForm() {
             value={steps}
             onChange={(e) => setSteps(e.target.value)}
           />
-          {stepsError && <p className="text-red-500 text-xs italic">{stepsError}</p>}
+          {errors.steps && <p className="text-red-500 text-xs italic">{errors.steps}</p>}
         </div>
         <button
           type="submit"
