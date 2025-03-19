@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 function AddRecipeForm() {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
-  const [instructions, setInstructions] = useState('');
+  const [steps, setSteps] = useState('');
   const [titleError, setTitleError] = useState('');
   const [ingredientsError, setIngredientsError] = useState('');
-  const [instructionsError, setInstructionsError] = useState('');
+  const [stepsError, setStepsError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,11 +29,11 @@ function AddRecipeForm() {
       setIngredientsError('');
     }
 
-    if (!instructions.trim()) {
-      setInstructionsError('Instructions are required');
+    if (!steps.trim()) {
+      setStepsError('Preparation steps are required');
       isValid = false;
     } else {
-      setInstructionsError('');
+      setStepsError('');
     }
 
     if (isValid) {
@@ -41,7 +41,7 @@ function AddRecipeForm() {
       const newRecipe = {
         title,
         ingredients: ingredients.split('\n').map(item => item.trim()).filter(item => item),
-        instructions: instructions.split('\n').map(item => item.trim()).filter(item => item),
+        steps: steps.split('\n').map(item => item.trim()).filter(item => item),
         // You might want to generate a unique ID here or let the backend handle it
         id: Date.now(),
         image: 'https://via.placeholder.com/300/CCCCCC/FFFFFF?Text=NewRecipe', // Placeholder image
@@ -51,7 +51,7 @@ function AddRecipeForm() {
       // Reset the form after submission (optional)
       setTitle('');
       setIngredients('');
-      setInstructions('');
+      setSteps('');
     }
   };
 
@@ -86,17 +86,17 @@ function AddRecipeForm() {
           {ingredientsError && <p className="text-red-500 text-xs italic">{ingredientsError}</p>}
         </div>
         <div className="mb-6">
-          <label htmlFor="instructions" className="block text-gray-700 text-sm font-bold mb-2">
+          <label htmlFor="steps" className="block text-gray-700 text-sm font-bold mb-2">
             Preparation Steps:
             <span className="text-gray-500 italic">(one step per line)</span>
           </label>
           <textarea
-            id="instructions"
+            id="steps"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-48"
-            value={instructions}
-            onChange={(e) => setInstructions(e.target.value)}
+            value={steps}
+            onChange={(e) => setSteps(e.target.value)}
           />
-          {instructionsError && <p className="text-red-500 text-xs italic">{instructionsError}</p>}
+          {stepsError && <p className="text-red-500 text-xs italic">{stepsError}</p>}
         </div>
         <button
           type="submit"
