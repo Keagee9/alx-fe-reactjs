@@ -1,11 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import { fetchUserData, searchUsers } from '../services/githubService';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from "@/components/ui/badge"
-import { cn } from "@/lib/utils"
 
 function Search() {
   const [username, setUsername] = useState('');
@@ -110,77 +104,74 @@ function Search() {
     <div className="space-y-6">
       <div className="space-y-4">
         <form onSubmit={handleBasicSearch} className="flex items-center gap-4">
-          <Input
+          <input
             type="text"
             placeholder="Enter GitHub username"
             value={username}
             onChange={handleInputChange}
-            className="flex-1"
+            className="flex-1 border rounded p-2"
           />
-          <Button type="submit" disabled={loading}>
+          <button type="submit" disabled={loading} className="bg-blue-500 text-white px-4 py-2 rounded">
             Search
-          </Button>
+          </button>
         </form>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Advanced Search</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Input
-                type="text"
-                placeholder="Location"
-                value={location}
-                onChange={handleLocationChange}
-              />
-              <Input
-                type="number"
-                placeholder="Minimum Repositories"
-                value={minRepos}
-                onChange={handleMinReposChange}
-              />
-              <Button
-                type="button"
-                onClick={() => {
-                  setPage(1);
-                  setUsers([]);
-                  setHasMore(true);
-                  handleAdvancedSearch();
-                }}
-                disabled={loading}
-                className="md:col-span-1"
-              >
-                Search Users
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="border rounded p-4">
+          <h2 className="text-lg font-semibold mb-4">Advanced Search</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <input
+              type="text"
+              placeholder="Location"
+              value={location}
+              onChange={handleLocationChange}
+              className="border rounded p-2"
+            />
+            <input
+              type="number"
+              placeholder="Minimum Repositories"
+              value={minRepos}
+              onChange={handleMinReposChange}
+              className="border rounded p-2"
+            />
+            <button
+              type="button"
+              onClick={() => {
+                setPage(1);
+                setUsers([]);
+                setHasMore(true);
+                handleAdvancedSearch();
+              }}
+              disabled={loading}
+              className="md:col-span-1 bg-green-500 text-white px-4 py-2 rounded"
+            >
+              Search Users
+            </button>
+          </div>
+        </div>
       </div>
 
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
 
       {userData && !isAdvancedSearch && (
-        <Card className="user-info">
-          <CardHeader>
-            <div className="flex items-center gap-4">
-              <Avatar>
-                <AvatarImage src={userData.avatar_url} alt={userData.login} />
-                <AvatarFallback>{userData.login.substring(0, 2)}</AvatarFallback>
-              </Avatar>
-              <div>
-                <CardTitle>{userData.name || userData.login}</CardTitle>
-                <Badge variant="secondary">
+        <div className="border rounded p-4">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="rounded-full overflow-hidden h-16 w-16">
+              {userData.avatar_url && <img src={userData.avatar_url} alt={userData.login} className="h-full w-full object-cover"/>}
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold">{userData.name || userData.login}</h3>
+              <div className="flex gap-2">
+                <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded">
                   {userData.followers} Followers
-                </Badge>
-                <Badge variant="secondary">
+                </span>
+                <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded">
                   {userData.public_repos} Repos
-                </Badge>
+                </span>
               </div>
             </div>
-          </CardHeader>
-          <CardContent>
+          </div>
+          <div>
             <p>Username: {userData.login}</p>
             {userData.location && <p>Location: {userData.location}</p>}
             {userData.html_url && (
@@ -195,55 +186,50 @@ function Search() {
                 </a>
               </p>
             )}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       )}
 
       {/* Display for Advanced Search Results */}
       {isAdvancedSearch && users.length > 0 && (
         <div className="space-y-4">
           {users.map((user) => (
-            <Card key={user.id} className="user-info">
-              <CardHeader>
-                <div className="flex items-center gap-4">
-                  <Avatar>
-                    <AvatarImage src={user.avatar_url} alt={user.login} />
-                    <AvatarFallback>{user.login.substring(0, 2)}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <CardTitle>{user.login}</CardTitle>
-                    {user.location && <p className="text-sm text-gray-500">Location: {user.location}</p>}
-                    <div className="flex gap-2">
-                      <Badge variant="secondary">
-                        {user.followers} Followers
-                      </Badge>
-                      <Badge variant="secondary">
-                        {user.public_repos} Repos
-                      </Badge>
-                    </div>
+            <div key={user.id} className="border rounded p-4">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="rounded-full overflow-hidden h-16 w-16">
+                  <img src={user.avatar_url} alt={user.login} className="h-full w-full object-cover" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">{user.login}</h3>
+                  {user.location && <p className="text-sm text-gray-500">Location: {user.location}</p>}
+                  <div className="flex gap-2">
+                    <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded">
+                      {user.followers} Followers
+                    </span>
+                    <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded">
+                      {user.public_repos} Repos
+                    </span>
                   </div>
                 </div>
-              </CardHeader>
-              <CardContent>
-                <a
-                  href={user.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
-                >
-                  View Profile on GitHub
-                </a>
-              </CardContent>
-            </Card>
+              </div>
+              <a
+                href={user.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:underline"
+              >
+                View Profile on GitHub
+              </a>
+            </div>
           ))}
           {hasMore && (
-            <Button
+            <button
               onClick={handleLoadMore}
               disabled={loading}
-              className="w-full"
+              className="w-full bg-gray-200 text-gray-700 px-4 py-2 rounded"
             >
               {loading ? 'Loading...' : 'Load More'}
-            </Button>
+            </button>
           )}
         </div>
       )}
