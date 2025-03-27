@@ -150,8 +150,8 @@ function Search() {
         </div>
       </div>
 
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {loading && <p className="text-gray-500">Loading...</p>}
+      {error && <p className="text-red-500">{error}</p>}
 
       {userData && !isAdvancedSearch && (
         <div className="border rounded p-4">
@@ -160,7 +160,7 @@ function Search() {
               {userData.avatar_url && <img src={userData.avatar_url} alt={userData.login} className="h-full w-full object-cover"/>}
             </div>
             <div>
-              <h3 className="text-xl font-semibold">{userData.name || userData.login}</h3>
+              <h3 className="text-xl font-semibold text-blue-600">{userData.name || userData.login}</h3>
               <div className="flex gap-2">
                 <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded">
                   {userData.followers} Followers
@@ -172,8 +172,8 @@ function Search() {
             </div>
           </div>
           <div>
-            <p>Username: {userData.login}</p>
-            {userData.location && <p>Location: {userData.location}</p>}
+            <p className="text-gray-700">Username: <span className="font-medium">{userData.login}</span></p>
+            {userData.location && <p className="text-gray-700">Location: <span className="font-medium">{userData.location}</span></p>}
             {userData.html_url && (
               <p>
                 <a
@@ -200,8 +200,8 @@ function Search() {
                   <img src={user.avatar_url} alt={user.login} className="h-full w-full object-cover" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold">{user.login}</h3>
-                  {user.location && <p className="text-sm text-gray-500">Location: {user.location}</p>}
+                  <h3 className="text-lg font-semibold text-blue-600">{user.login}</h3>
+                  {user.location && <p className="text-sm text-gray-500">Location: <span className="font-medium">{user.location}</span></p>}
                   <div className="flex gap-2">
                     <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded">
                       {user.followers} Followers
@@ -226,7 +226,7 @@ function Search() {
             <button
               onClick={handleLoadMore}
               disabled={loading}
-              className="w-full bg-gray-200 text-gray-700 px-4 py-2 rounded"
+              className="w-full bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition-colors"
             >
               {loading ? 'Loading...' : 'Load More'}
             </button>
